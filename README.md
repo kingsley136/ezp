@@ -1,6 +1,6 @@
 # Requirments
 
-    - jQuery
+- jQuery
 
 # How to use
 
@@ -23,5 +23,4 @@ You can find these images at `/img` directory
 <div class="ezpStandby"></div>
 ```
 
-# Enjoy it,
-
+You can see `index.html` for easy to understand ;)
