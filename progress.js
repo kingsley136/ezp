@@ -55,9 +55,9 @@ function updateProgress(ele) {
     $("#ezpLoadedPercent").val(loadedPercent < 25 ? loadedPercent + 25 : loadedPercent);
 
     $(".ezpContainer.filled").animate({
-      width: loadedPercent + "%" 
+      width: (loadedPercent > 100 ? loadedPercent - 25 : loadedPercent) + "%" 
     } , loadedPercent > Math.floor(Math.random() * 70) + 30 ? Math.floor(Math.random() * 20) + 5 : Math.floor(Math.random() * 10) + 5 ,() => {
-      if(loadedPercent > 75) {
+      if(loadedPercent > 99) {
         $(".ezpStandby").fadeOut("slow");
       }     
     });
