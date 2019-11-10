@@ -1,0 +1,30 @@
+.ezpStandby {
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    line-height: 100vh;
+    background-color: #cccccc;
+    z-index: 99999999999;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+}
+
+.ezpContainer {
+  position: absolute;
+}
+
+.filled.ezpContainer {
+  overflow: auto;
+  width: 0px;
+}
+
+.ezpImage {
+  width: 100vw;
+}
+
+@media only screen and (max-width: 768px) {
+  .ezpContainer {
+    margin-top: 45%;
+  }
+}
