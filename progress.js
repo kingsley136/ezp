@@ -1,12 +1,12 @@
 function prepareLoading() {
     const templateString = [
         '<div class="ezpContainer">',
-        // path to empty image 
-        '<img class="ezpImage" src="img/empty.png"/>',
+        // path to empty image
+        '<img class="ezpImage" src="https://raw.githubusercontent.com/kingsley136/ezp/master/img/empty.png"/>',
         '</div>',
         '<div class="filled ezpContainer">',
         // path to filled image
-        '<img class="ezpImage" src="img/filled.png"/>',
+        '<img class="ezpImage" src="https://raw.githubusercontent.com/kingsley136/ezp/master/img/filled.png"/>',
         '</div>',
         '<input type="hidden" id="ezpLoadedPercent" value="0">'
   ].join('');
@@ -34,15 +34,16 @@ function eraseCookie(key) {
 document.onreadystatechange = (e) => {
   if (!getCookie('ezpCookie')) {
     setCookie('ezpCookie', 1, 7);
-    if(document.readyState=="interactive") {
+    if(document.readyState=="complete") {
       prepareLoading();
       let all = $("*");
       for (var i=0, max=all.length; i < max; i++) {
         updateProgress(all[i]);
       }
     }
+  } else {
+    $(".ezpStandby").fadeOut("slow");
   }
-   
 }
 
 function updateProgress(ele) {
@@ -51,15 +52,15 @@ function updateProgress(ele) {
 
   if ($(ele).on()) {
     let loadedPercent = step + Number($("#ezpLoadedPercent")[0].value);
-    
+
     $("#ezpLoadedPercent").val(loadedPercent < 25 ? loadedPercent + 25 : loadedPercent);
 
     $(".ezpContainer.filled").animate({
-      width: (loadedPercent > 100 ? loadedPercent - 25 : loadedPercent) + "%" 
+      width: (loadedPercent > 100 ? loadedPercent - 25 : loadedPercent) + "%"
     } , loadedPercent > Math.floor(Math.random() * 70) + 30 ? Math.floor(Math.random() * 20) + 5 : Math.floor(Math.random() * 10) + 5 ,() => {
       if(loadedPercent > 99) {
         $(".ezpStandby").fadeOut("slow");
-      }     
+      }
     });
   } else  {
     updateProgress(ele);
